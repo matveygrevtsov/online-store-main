@@ -1,5 +1,6 @@
 import React from "react";
+import { HelloWorld } from "./components/HelloWorld/HelloWorld";
 
 export const App = (): JSX.Element => {
-  return <h1>Hello, world!</h1>;
+  return <HelloWorld />;
 };
