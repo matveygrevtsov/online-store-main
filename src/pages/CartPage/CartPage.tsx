@@ -1,17 +1,13 @@
 import Title from "antd/es/typography/Title";
-import React, { FC, Suspense, lazy } from "react";
-
-// @ts-ignore
-const RemoteCart = lazy<FC>(() => import("cart/Cart"));
+import React, { FC, lazy } from "react";
+import { Cart } from "../../remoteComponents/Cart/Cart";
 
 export const CartPage = () => {
   return (
     <>
       <Title>Корзина</Title>
 
-      <Suspense>
-        <RemoteCart />
-      </Suspense>
+      <Cart />
     </>
   );
 };

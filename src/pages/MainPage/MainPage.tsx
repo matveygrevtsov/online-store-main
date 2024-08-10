@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ProductsList } from "./components";
+import { ProductsList } from "./components/ProductList/ProductsList";
 
 import { MOCK_PRODUCTIONS } from "../../constants";
 import Title from "antd/es/typography/Title";
