@@ -1,5 +1,5 @@
 import React from "react";
-import { SignInForm } from "./components/SignInForm/";
+import { SignInForm } from "./components/SignInForm/SignInForm";
 import { UserAuthCredentials } from "../../types";
 import { useAppDispatch } from "../../store";
 import { signInAsyncThunk } from "../../store/userSlice/asyncThunks/signInAsyncThunk";

@@ -7,7 +7,7 @@ import { store } from "./store";
 
 import { NotificationInstance } from "antd/es/notification/interface";
 import useNotification from "antd/es/notification/useNotification";
-import { Routes } from "./components/Routes";
+import { Routes } from "./components/Routes/Routes";
 
 export const NotificationContext = createContext<NotificationInstance>(
   {} as NotificationInstance

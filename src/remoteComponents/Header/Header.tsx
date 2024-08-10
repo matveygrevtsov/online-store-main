@@ -6,7 +6,7 @@ import {
   ShoppingOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
-import { Badge } from "antd";
+import { Badge, Typography } from "antd";
 import { Header as AntdHeader } from "antd/es/layout/layout";
 import { RoutePath } from "../../types";
 import { logOutAsyncThunk } from "../../store/userSlice/asyncThunks/logOutAsyncThunk";
@@ -17,8 +17,16 @@ const RemoteHeader = lazy<
     items: ItemType<MenuItemType>[];
     onLogout?: () => void;
   }>
+>(() =>
   // @ts-ignore
->(() => import("header/Header"));
+  import("header/Header").catch((error) => ({
+    default: () => (
+      <Typography.Text type="danger">
+        {`Не удалось загрузить header (${JSON.stringify(error)})`}
+      </Typography.Text>
+    ),
+  }))
+);
 
 type Items = ItemType<MenuItemType>[];
 
@@ -82,7 +90,7 @@ export const Header = () => {
 
   return (
     <AntdHeader>
-      <Suspense>
+      <Suspense fallback={<h1>Не удалось загрузить header</h1>}>
         <RemoteHeader
           items={items}
           onLogout={userData.status === "authorized" ? handleLogout : undefined}

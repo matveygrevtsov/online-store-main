@@ -1,6 +1,6 @@
 import AntdLayout, { Content, Footer } from "antd/es/layout/layout";
 import React, { FC, PropsWithChildren } from "react";
-import { Header } from "../Header";
+import { Header } from "../../remoteComponents/Header/Header";
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
