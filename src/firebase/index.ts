@@ -13,4 +13,5 @@ const firebaseConfig: FirebaseOptions = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 
+// https://console.firebase.google.com/project/online-shop-9418c/authentication/users
 export const firebaseAuth = getAuth(firebaseApp);
