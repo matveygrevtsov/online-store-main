@@ -1,26 +1,45 @@
 import React from "react";
-import { Flex } from "antd";
+import { Alert, Flex } from "antd";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { Product } from "../../../../types";
+import { useQuery } from "@tanstack/react-query";
+import { EQueryKeys } from "../../../../tanstack";
+import { database } from "../../../../firebase";
+import { Spin } from "antd";
 
-interface ProductsListProps {
-  products: Product[];
-}
+export const ProductsList = (): JSX.Element => {
+  const { data, isError } = useQuery({
+    queryKey: [EQueryKeys.FetchAllProducts],
+    queryFn: async () => {
+      const productsRecord = await database.get<Record<string, Product>>(
+        "products"
+      );
+      return productsRecord ? Object.values(productsRecord) : [];
+    },
+  });
 
-export const ProductsList = ({ products }: ProductsListProps): JSX.Element => {
-  return (
-    <Flex
-      gap={16}
-      wrap="wrap"
-      justify="center"
-      style={{
-        maxWidth: "932px",
-        width: "100%",
-      }}
-    >
-      {products.map((product) => (
-        <ProductCard product={product} />
-      ))}
-    </Flex>
-  );
+  if (data) {
+    return (
+      <Flex
+        gap={16}
+        wrap="wrap"
+        justify="center"
+        align="start"
+        style={{
+          maxWidth: "932px",
+          width: "100%",
+        }}
+      >
+        {data.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </Flex>
+    );
+  }
+
+  if (isError) {
+    return <Alert message="Не удалось скачать список товаров" type="error" />;
+  }
+
+  return <Spin />;
 };

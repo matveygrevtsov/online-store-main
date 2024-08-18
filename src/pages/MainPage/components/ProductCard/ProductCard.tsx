@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Product } from "../../../../types";
+import ProductCounter from "../../../../components/ProductCounter/ProductCounter";
 
 const { Meta } = Card;
 
@@ -10,13 +10,13 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product }: ProductCardProps): JSX.Element => {
-  const { description, price, image } = product;
+  const { id, description, price, image } = product;
 
   return (
     <Card
       style={{ maxWidth: "300px", width: "100%" }}
       cover={<img alt="example" src={image} />}
-      actions={[<ShoppingCartOutlined />]} // Если идёт загрузка, отображать <Spin size="small" />
+      actions={[<ProductCounter productId={id} />]}
     >
       <Meta title={price} description={description} />
     </Card>

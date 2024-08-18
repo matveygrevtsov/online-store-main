@@ -13,9 +13,14 @@ export const signUpAsyncThunk = createAsyncThunk<void, UserAuthCredentials>(
     thunkAPI.dispatch(setLoading());
 
     try {
-      await createUserWithEmailAndPassword(firebaseAuth, email, password);
+      const response = await createUserWithEmailAndPassword(
+        firebaseAuth,
+        email,
+        password
+      );
 
       const userData: AuthorizedUserData = {
+        uid: response.user.uid,
         idsOfProductsInCart: [],
       };
 

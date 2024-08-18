@@ -5,7 +5,7 @@ import { AuthorizedUserDataSchema, userStoreActions } from "../store/userSlice";
 
 const { setUserData, logout } = userStoreActions;
 
-export const useUserDataFromLocalStorage = () => {
+export const useUserDataFromLocalStorageChangesHandler = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {

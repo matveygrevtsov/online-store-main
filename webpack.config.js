@@ -17,9 +17,13 @@ const cartUrl = process.env.CART_URL
 const moduleFederationConfig = {
   name: "main",
   remotes: {
-    header: `header@${headerUrl}/remoteEntry.js`,
-    cart: `cart@${cartUrl}/remoteEntry.js`,
+    header: `header@${headerUrl}/remoteEntry.js`, // headerUrl - это домен, на котором "живёт" хедер; header - это name, который мы задали в ремоуте в moduleFederationConfig.
+    cart: `cart@${cartUrl}/remoteEntry.js`, // cartUrl - это домен, на котором "живёт" хедер; cart - это name, который мы задали в ремоуте в moduleFederationConfig.
   },
+  exposes: {
+    "./ProductCounter": "./src/components/ProductCounter/ProductCounter",
+  },
+  // Библиотеки, которые мы собираемся шерить.
   shared: {
     ...deps,
     react: {
