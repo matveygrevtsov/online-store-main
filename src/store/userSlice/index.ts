@@ -3,6 +3,7 @@ import z from "zod";
 import { ELocalStorageKey } from "../../types";
 
 export const AuthorizedUserDataSchema = z.object({
+  uid: z.string(),
   idsOfProductsInCart: z.array(z.string()),
 });
 
