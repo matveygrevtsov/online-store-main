@@ -10,12 +10,7 @@ import { Spin } from "antd";
 export const ProductsList = (): JSX.Element => {
   const { data, isError } = useQuery({
     queryKey: [EQueryKeys.FetchAllProducts],
-    queryFn: async () => {
-      const productsRecord = await database.get<Record<string, Product>>(
-        "products"
-      );
-      return productsRecord ? Object.values(productsRecord) : [];
-    },
+    queryFn: () => database.get<Product[]>("products"),
   });
 
   if (data) {
