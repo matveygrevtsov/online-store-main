@@ -1,10 +1,14 @@
 import React from "react";
-import { Footer as AntdFooter } from "antd/es/layout/layout";
+// import { Footer } from "antd/es/layout/layout";
+import { Flex } from "antd";
 
-export const Footer = () => {
-  return (
-    <AntdFooter style={{ textAlign: "center" }}>
-      ONLINE-SHOP ©{new Date().getFullYear()}
-    </AntdFooter>
-  );
+const CustomFooter = () => {
+  return <Flex>ONLINE-SHOP ©{new Date().getFullYear()}</Flex>;
+  // return (
+  //   <Footer style={{ textAlign: "center" }}>
+  //     ONLINE-SHOP ©{new Date().getFullYear()}
+  //   </Footer>
+  // );
 };
+
+export default CustomFooter;
