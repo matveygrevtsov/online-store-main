@@ -1,9 +1,13 @@
-export interface Product {
-  id: number;
-  description: string;
-  price: number;
-  image: string;
-}
+import z from "zod";
+
+export const ProductScheme = z.object({
+  id: z.string(),
+  description: z.string(),
+  price: z.number(),
+  image: z.string(),
+});
+
+export type Product = z.infer<typeof ProductScheme>;
 
 export enum RoutePath {
   SingIn = "/sign-in",
