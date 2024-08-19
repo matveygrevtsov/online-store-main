@@ -26,22 +26,12 @@ export const Cart = () => {
 
   const { data: allProducts } = useQuery({
     queryKey: [EQueryKeys.FetchAllProducts],
-    queryFn: async () => {
-      const productsRecord = await database.get<Record<string, Product>>(
-        "products"
-      );
-      return productsRecord ? Object.values(productsRecord) : [];
-    },
+    queryFn: () => database.get<Product[]>("products"),
   });
 
   const { data: userCart } = useQuery({
     queryKey: [EQueryKeys.FetchUserCart, uid],
-    queryFn: async () => {
-      const productsRecord = await database.get<Record<string, number>>(
-        `carts/${uid}`
-      );
-      return productsRecord ? Object.values(productsRecord) : [];
-    },
+    queryFn: async () => database.get<Record<string, number>>(`carts/${uid}`),
   });
 
   const products = useMemo(() => {

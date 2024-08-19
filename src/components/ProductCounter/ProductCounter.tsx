@@ -6,7 +6,7 @@ import { EQueryKeys } from "../../tanstack";
 import { useQuery } from "@tanstack/react-query";
 import { database } from "../../firebase";
 import { useMutation } from "../../hooks/useMutation";
-import { Flex, Input, Spin } from "antd";
+import { Flex, Input, Spin, Button } from "antd";
 import {
   ShoppingCartOutlined,
   MinusOutlined,
@@ -14,7 +14,7 @@ import {
 } from "@ant-design/icons";
 
 interface IProps {
-  productId: number;
+  productId: string;
 }
 
 const ProductCounter: FC<IProps> = ({ productId }) => {
@@ -30,12 +30,8 @@ const ProductCounter: FC<IProps> = ({ productId }) => {
     isLoading: isProductCountLoading,
   } = useQuery({
     queryKey: [EQueryKeys.FetchUserCart, userData.uid],
-    queryFn: async () => {
-      const cart = await database.get<Record<string, number>>(
-        `carts/${userData.uid}`
-      );
-      return cart;
-    },
+    queryFn: () =>
+      database.get<Record<string, number>>(`carts/${userData.uid}`),
   });
 
   const { mutateAsync, isPending: isMutationInProgress } = useMutation({
@@ -94,9 +90,17 @@ const ProductCounter: FC<IProps> = ({ productId }) => {
 
   return (
     <Flex align="center" justify="center" gap={16} style={{ padding: "16px" }}>
-      <MinusOutlined onClick={handleMinusClick} />
+      <Button
+        onClick={handleMinusClick}
+        shape="circle"
+        icon={<MinusOutlined />}
+      />
       <Input value={count} readOnly />
-      <PlusOutlined onClick={handlePlusClick} />
+      <Button
+        onClick={handlePlusClick}
+        shape="circle"
+        icon={<PlusOutlined />}
+      />
     </Flex>
   );
 };
