@@ -1,6 +1,7 @@
-import AntdLayout, { Content, Footer } from "antd/es/layout/layout";
+import AntdLayout, { Content } from "antd/es/layout/layout";
 import React, { FC, PropsWithChildren } from "react";
 import { Header } from "../../remoteComponents/Header/Header";
+import { Footer } from "../Footer/Footer";
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -22,9 +23,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
         {children}
       </Content>
 
-      <Footer style={{ textAlign: "center" }}>
-        ONLINE-SHOP ©{new Date().getFullYear()}
-      </Footer>
+      <Footer />
     </AntdLayout>
   );
 };
