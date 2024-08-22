@@ -1,4 +1,4 @@
-import { QueryClient } from "@tanstack/react-query";
+import { QueryClient } from '@tanstack/react-query';
 
 export const QUERY_CLIENT = new QueryClient({
   defaultOptions: {
@@ -9,6 +9,6 @@ export const QUERY_CLIENT = new QueryClient({
 });
 
 export enum EQueryKeys {
-  FetchAllProducts = "FetchAllProducts",
-  FetchUserCart = "FetchUserCart",
+  FetchAllProducts = 'FetchAllProducts',
+  FetchUserCart = 'FetchUserCart',
 }

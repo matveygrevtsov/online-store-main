@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import { useNotification } from "./useNotification";
+import { useEffect } from 'react';
+import { useNotification } from './useNotification';
 
-const CUSTOM_EVENT_NAME = "customEvent";
+const CUSTOM_EVENT_NAME = 'customEvent';
 
 interface SignUpErrorCustomEvent {
-  type: "signUpError";
+  type: 'signUpError';
   errorDescription: any;
 }
 
 interface SignInErrorCustomEvent {
-  type: "signInError";
+  type: 'signInError';
   errorDescription: any;
 }
 
@@ -31,17 +31,17 @@ export const useCustomEventsHandler = () => {
       const event = customEvent?.detail as CustomEvent;
 
       switch (event.type) {
-        case "signUpError": {
+        case 'signUpError': {
           notification.error({
-            message: "Не удалось зарегистрироваться",
+            message: 'Не удалось зарегистрироваться',
             description: JSON.stringify(event.errorDescription),
           });
           return;
         }
 
-        case "signInError": {
+        case 'signInError': {
           notification.error({
-            message: "Не удалось войти",
+            message: 'Не удалось войти',
             description: JSON.stringify(event.errorDescription),
           });
           return;

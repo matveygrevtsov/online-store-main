@@ -1,15 +1,15 @@
-import React from "react";
-import { Route, Routes as ReactRouterDomRoutes } from "react-router-dom";
-import { useAppSelector } from "../../store";
-import { CartPage } from "../../pages/CartPage/CartPage";
-import { MainPage } from "../../pages/MainPage/MainPage";
-import { SignInPage } from "../../pages/SignInPage/SignInPage";
-import { SignUpPage } from "../../pages/SignUpPage/SignUpPage";
-import { RoutePath } from "../../types";
-import { Spin } from "antd";
-import { Layout } from "../Layout/Layout";
-import { useCustomEventsHandler } from "../../hooks/useCustomEventsHandler";
-import { useUserDataFromLocalStorageChangesHandler } from "../../hooks/useUserDataFromLocalStorageChangesHandler";
+import React from 'react';
+import { Route, Routes as ReactRouterDomRoutes } from 'react-router-dom';
+import { useAppSelector } from '../../store';
+import { CartPage } from '../../pages/CartPage/CartPage';
+import { MainPage } from '../../pages/MainPage/MainPage';
+import { SignInPage } from '../../pages/SignInPage/SignInPage';
+import { SignUpPage } from '../../pages/SignUpPage/SignUpPage';
+import { RoutePath } from '../../types';
+import { Spin } from 'antd';
+import { Layout } from '../Layout/Layout';
+import { useCustomEventsHandler } from '../../hooks/useCustomEventsHandler';
+import { useUserDataFromLocalStorageChangesHandler } from '../../hooks/useUserDataFromLocalStorageChangesHandler';
 
 export const Routes = () => {
   const userStatus = useAppSelector((store) => store.user.status);
@@ -18,7 +18,7 @@ export const Routes = () => {
   useUserDataFromLocalStorageChangesHandler();
 
   switch (userStatus) {
-    case "authorized": {
+    case 'authorized': {
       return (
         <Layout>
           <ReactRouterDomRoutes>
@@ -29,7 +29,7 @@ export const Routes = () => {
       );
     }
 
-    case "notAuthorized": {
+    case 'notAuthorized': {
       return (
         <Layout>
           <ReactRouterDomRoutes>

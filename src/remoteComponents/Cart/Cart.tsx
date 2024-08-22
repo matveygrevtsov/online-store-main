@@ -1,10 +1,10 @@
-import React, { FC, Suspense, lazy, useMemo } from "react";
-import { Typography } from "antd";
-import { Product } from "../../types";
-import { useUserData } from "../../hooks/useUserData";
-import { EQueryKeys } from "../../tanstack";
-import { useQuery } from "@tanstack/react-query";
-import { database } from "../../firebase";
+import React, { FC, Suspense, lazy, useMemo } from 'react';
+import { Typography } from 'antd';
+import { Product } from '../../types';
+import { useUserData } from '../../hooks/useUserData';
+import { EQueryKeys } from '../../tanstack';
+import { useQuery } from '@tanstack/react-query';
+import { database } from '../../firebase';
 
 const RemoteCart = lazy<
   FC<{
@@ -12,13 +12,13 @@ const RemoteCart = lazy<
   }>
 >(() =>
   // @ts-ignore
-  import("cart/Cart").catch((error) => ({
+  import('cart/Cart').catch((error) => ({
     default: () => (
       <Typography.Text type="danger">
         {`Не удалось загрузить header (${JSON.stringify(error)})`}
       </Typography.Text>
     ),
-  }))
+  })),
 );
 
 export const Cart = () => {
@@ -26,7 +26,7 @@ export const Cart = () => {
 
   const { data: allProducts } = useQuery({
     queryKey: [EQueryKeys.FetchAllProducts],
-    queryFn: () => database.get<Product[]>("products"),
+    queryFn: () => database.get<Product[]>('products'),
   });
 
   const { data: userCart } = useQuery({

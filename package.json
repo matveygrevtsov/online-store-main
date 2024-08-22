@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npx webpack --mode production",
     "start": "npx webpack server",
-    "test": "jest --runInBand --detectOpenHandles --forceExit"
+    "test": "jest --runInBand --detectOpenHandles --forceExit",
+    "prettier": "prettier --write \"src/**/*.{js,ts,jsx,tsx,css}\""
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "external-remotes-plugin": "^1.0.0",
     "html-webpack-plugin": "^5.6.0",
     "jest": "^29.7.0",
+    "prettier": "^3.3.3",
     "style-loader": "^4.0.0",
     "ts-jest": "^29.2.4",
     "ts-loader": "^9.5.1",

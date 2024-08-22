@@ -1,5 +1,5 @@
-import { useAppSelector } from "../store";
-import { AuthorizedUserData } from "../store/userSlice";
+import { useAppSelector } from '../store';
+import { AuthorizedUserData } from '../store/userSlice';
 
 export const useUserData = () => {
   return useAppSelector((store) => {

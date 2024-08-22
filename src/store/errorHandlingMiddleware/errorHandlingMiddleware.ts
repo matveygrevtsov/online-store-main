@@ -1,5 +1,5 @@
-import { Middleware, MiddlewareAPI, isRejected } from "@reduxjs/toolkit";
-import { userStoreActions } from "../userSlice";
+import { Middleware, MiddlewareAPI, isRejected } from '@reduxjs/toolkit';
+import { userStoreActions } from '../userSlice';
 
 const { logout } = userStoreActions;
 

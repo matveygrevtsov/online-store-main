@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-import { ELocalStorageKey } from "../types";
-import { useAppDispatch } from "../store";
-import { AuthorizedUserDataSchema, userStoreActions } from "../store/userSlice";
+import { useEffect } from 'react';
+import { ELocalStorageKey } from '../types';
+import { useAppDispatch } from '../store';
+import { AuthorizedUserDataSchema, userStoreActions } from '../store/userSlice';
 
 const { setUserData, logout } = userStoreActions;
 
@@ -10,18 +10,14 @@ export const useUserDataFromLocalStorageChangesHandler = () => {
 
   useEffect(() => {
     const checkUserDataInLocalStorage = () => {
-      const userDataFromLocalStorage = window.localStorage.getItem(
-        ELocalStorageKey.UserData
-      );
+      const userDataFromLocalStorage = window.localStorage.getItem(ELocalStorageKey.UserData);
 
       if (!userDataFromLocalStorage) {
         dispatch(logout());
         return;
       }
 
-      const parse = AuthorizedUserDataSchema.safeParse(
-        JSON.parse(userDataFromLocalStorage)
-      );
+      const parse = AuthorizedUserDataSchema.safeParse(JSON.parse(userDataFromLocalStorage));
 
       if (parse.success) {
         dispatch(setUserData(parse.data));
@@ -31,22 +27,19 @@ export const useUserDataFromLocalStorageChangesHandler = () => {
     };
 
     const handleLocalStorageChange = (event: StorageEvent) => {
-      if (
-        event.key !== ELocalStorageKey.UserData ||
-        event.oldValue === event.newValue
-      ) {
+      if (event.key !== ELocalStorageKey.UserData || event.oldValue === event.newValue) {
         return;
       }
 
       checkUserDataInLocalStorage();
     };
 
-    window.addEventListener("storage", handleLocalStorageChange);
+    window.addEventListener('storage', handleLocalStorageChange);
 
     checkUserDataInLocalStorage();
 
     return () => {
-      window.removeEventListener("storage", handleLocalStorageChange);
+      window.removeEventListener('storage', handleLocalStorageChange);
     };
   }, [dispatch]);
 };

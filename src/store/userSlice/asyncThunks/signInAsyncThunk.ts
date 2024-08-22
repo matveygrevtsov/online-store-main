@@ -1,23 +1,19 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { firebaseAuth } from "../../../firebase";
-import { UserAuthCredentials } from "../../../types";
-import { AuthorizedUserData, userStoreActions } from "..";
-import { dispatchCustomEvent } from "../../../hooks/useCustomEventsHandler";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { firebaseAuth } from '../../../firebase';
+import { UserAuthCredentials } from '../../../types';
+import { AuthorizedUserData, userStoreActions } from '..';
+import { dispatchCustomEvent } from '../../../hooks/useCustomEventsHandler';
 
 const { setLoading, setUserData, logout } = userStoreActions;
 
 export const signInAsyncThunk = createAsyncThunk<void, UserAuthCredentials>(
-  "user/signIn",
+  'user/signIn',
   async function ({ email, password }, thunkAPI) {
     thunkAPI.dispatch(setLoading());
 
     try {
-      const response = await signInWithEmailAndPassword(
-        firebaseAuth,
-        email,
-        password
-      );
+      const response = await signInWithEmailAndPassword(firebaseAuth, email, password);
 
       const userData: AuthorizedUserData = {
         uid: response.user.uid,
@@ -29,9 +25,9 @@ export const signInAsyncThunk = createAsyncThunk<void, UserAuthCredentials>(
       thunkAPI.dispatch(logout());
 
       dispatchCustomEvent({
-        type: "signInError",
+        type: 'signInError',
         errorDescription,
       });
     }
-  }
+  },
 );
