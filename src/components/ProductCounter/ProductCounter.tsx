@@ -1,5 +1,4 @@
-import React from 'react';
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useNotification } from '../../hooks/useNotification';
 import { useUserData } from '../../hooks/useUserData';
 import { EQueryKeys } from '../../tanstack';
@@ -70,7 +69,7 @@ const ProductCounter: FC<IProps> = ({ productId }) => {
     );
   };
 
-  useEffect(() => setCount(cart?.[productId] || 0), [productId, cart, setCount]);
+  useEffect(() => setCount(cart?.[productId] ?? 0), [productId, cart, setCount]);
 
   if (isProductCountFetching || isProductCountLoading || isMutationInProgress) {
     return <Spin size="small" />;

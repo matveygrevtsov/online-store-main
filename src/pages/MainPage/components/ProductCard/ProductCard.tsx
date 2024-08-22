@@ -16,7 +16,7 @@ export const ProductCard = ({ product }: ProductCardProps): JSX.Element => {
     <Card
       style={{ maxWidth: '300px', width: '100%' }}
       cover={<img alt="example" src={image} />}
-      actions={[<ProductCounter productId={id} />]}
+      actions={[<ProductCounter key={id} productId={id} />]}
     >
       <Meta title={price} description={description} />
     </Card>

@@ -1,11 +1,10 @@
 import React from 'react';
-import { Alert, Flex } from 'antd';
+import { Alert, Flex, Spin } from 'antd';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../../../types';
 import { useQuery } from '@tanstack/react-query';
 import { EQueryKeys } from '../../../../tanstack';
 import { database } from '../../../../firebase';
-import { Spin } from 'antd';
 
 export const ProductsList = (): JSX.Element => {
   const { data, isError } = useQuery({
