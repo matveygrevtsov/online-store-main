@@ -1,6 +1,6 @@
-import React from "react";
-import { Button, Form, Input } from "antd";
-import { UserAuthCredentials } from "../../../../types";
+import React from 'react';
+import { Button, Form, Input } from 'antd';
+import { UserAuthCredentials } from '../../../../types';
 
 const formItemLayout = {
   labelCol: {
@@ -38,19 +38,19 @@ export const SignUpForm = ({ onSubmit }: SignUpFormProps): JSX.Element => {
       {...formItemLayout}
       form={form}
       onFinish={onSubmit}
-      style={{ maxWidth: "600px", width: "100%" }}
+      style={{ maxWidth: '600px', width: '100%' }}
     >
       <Form.Item
         name="email"
         label="Почта"
         rules={[
           {
-            type: "email",
-            message: "Невалидная почта!",
+            type: 'email',
+            message: 'Невалидная почта!',
           },
           {
             required: true,
-            message: "Пожалуйста, укажите почту!",
+            message: 'Пожалуйста, укажите почту!',
           },
         ]}
       >
@@ -63,7 +63,7 @@ export const SignUpForm = ({ onSubmit }: SignUpFormProps): JSX.Element => {
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите пароль!",
+            message: 'Пожалуйста, введите пароль!',
           },
         ]}
         hasFeedback
@@ -74,19 +74,19 @@ export const SignUpForm = ({ onSubmit }: SignUpFormProps): JSX.Element => {
       <Form.Item
         name="confirm"
         label="Подтвердите пароль"
-        dependencies={["password"]}
+        dependencies={['password']}
         hasFeedback
         rules={[
           {
             required: true,
-            message: "Пожалуйста, подтвердите пароль!",
+            message: 'Пожалуйста, подтвердите пароль!',
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
-              if (!value || getFieldValue("password") === value) {
+              if (!value || getFieldValue('password') === value) {
                 return Promise.resolve();
               }
-              return Promise.reject(new Error("Пароли не совпадают!"));
+              return Promise.reject(new Error('Пароли не совпадают!'));
             },
           }),
         ]}

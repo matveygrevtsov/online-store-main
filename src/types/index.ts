@@ -1,4 +1,4 @@
-import z from "zod";
+import z from 'zod';
 
 export const ProductScheme = z.object({
   id: z.string(),
@@ -10,14 +10,14 @@ export const ProductScheme = z.object({
 export type Product = z.infer<typeof ProductScheme>;
 
 export enum RoutePath {
-  SingIn = "/sign-in",
-  SingUp = "/sign-up",
-  Cart = "/cart",
-  Main = "/main",
+  SingIn = '/sign-in',
+  SingUp = '/sign-up',
+  Cart = '/cart',
+  Main = '/main',
 }
 
 export enum ELocalStorageKey {
-  UserData = "UserData",
+  UserData = 'UserData',
 }
 
 export interface UserAuthCredentials {

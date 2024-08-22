@@ -1,9 +1,9 @@
-import React from "react";
-import { SignUpForm } from "./components/SignUpForm/";
-import { useAppDispatch } from "../../store";
-import { UserAuthCredentials } from "../../types";
-import { signUpAsyncThunk } from "../../store/userSlice/asyncThunks/signUpAsyncThunk";
-import Title from "antd/es/typography/Title";
+import React from 'react';
+import { SignUpForm } from './components/SignUpForm/';
+import { useAppDispatch } from '../../store';
+import { UserAuthCredentials } from '../../types';
+import { signUpAsyncThunk } from '../../store/userSlice/asyncThunks/signUpAsyncThunk';
+import Title from 'antd/es/typography/Title';
 
 export const SignUpPage = () => {
   const dispatch = useAppDispatch();

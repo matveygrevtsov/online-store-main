@@ -1,6 +1,6 @@
-import React from "react";
-import { Button, Form, Input } from "antd";
-import { UserAuthCredentials } from "../../../../types";
+import React from 'react';
+import { Button, Form, Input } from 'antd';
+import { UserAuthCredentials } from '../../../../types';
 
 const formItemLayout = {
   labelCol: {
@@ -38,19 +38,19 @@ export const SignInForm = ({ onSubmit }: SignInFormProps): JSX.Element => {
       {...formItemLayout}
       form={form}
       onFinish={onSubmit}
-      style={{ maxWidth: "600px", width: "100%" }}
+      style={{ maxWidth: '600px', width: '100%' }}
     >
       <Form.Item
         name="email"
         label="Почта"
         rules={[
           {
-            type: "email",
-            message: "Невалидная почта!",
+            type: 'email',
+            message: 'Невалидная почта!',
           },
           {
             required: true,
-            message: "Пожалуйста, введите почту!",
+            message: 'Пожалуйста, введите почту!',
           },
         ]}
       >
@@ -63,7 +63,7 @@ export const SignInForm = ({ onSubmit }: SignInFormProps): JSX.Element => {
         rules={[
           {
             required: true,
-            message: "Пожалуйста, введите пароль!",
+            message: 'Пожалуйста, введите пароль!',
           },
         ]}
         hasFeedback

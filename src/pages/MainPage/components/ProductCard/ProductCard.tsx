@@ -1,7 +1,7 @@
-import React from "react";
-import { Card } from "antd";
-import { Product } from "../../../../types";
-import ProductCounter from "../../../../components/ProductCounter/ProductCounter";
+import React from 'react';
+import { Card } from 'antd';
+import { Product } from '../../../../types';
+import ProductCounter from '../../../../components/ProductCounter/ProductCounter';
 
 const { Meta } = Card;
 
@@ -14,7 +14,7 @@ export const ProductCard = ({ product }: ProductCardProps): JSX.Element => {
 
   return (
     <Card
-      style={{ maxWidth: "300px", width: "100%" }}
+      style={{ maxWidth: '300px', width: '100%' }}
       cover={<img alt="example" src={image} />}
       actions={[<ProductCounter productId={id} />]}
     >

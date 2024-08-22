@@ -1,16 +1,16 @@
-import React, { Suspense, useMemo, lazy, FC } from "react";
-import { useAppDispatch, useAppSelector } from "../../store";
+import React, { Suspense, useMemo, lazy, FC } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store';
 import {
   UserAddOutlined,
   LoginOutlined,
   ShoppingOutlined,
   ShoppingCartOutlined,
-} from "@ant-design/icons";
-import { Badge, Typography } from "antd";
-import { Header as AntdHeader } from "antd/es/layout/layout";
-import { RoutePath } from "../../types";
-import { logOutAsyncThunk } from "../../store/userSlice/asyncThunks/logOutAsyncThunk";
-import { ItemType, MenuItemType } from "antd/es/menu/interface";
+} from '@ant-design/icons';
+import { Badge, Typography } from 'antd';
+import { Header as AntdHeader } from 'antd/es/layout/layout';
+import { RoutePath } from '../../types';
+import { logOutAsyncThunk } from '../../store/userSlice/asyncThunks/logOutAsyncThunk';
+import { ItemType, MenuItemType } from 'antd/es/menu/interface';
 
 const RemoteHeader = lazy<
   FC<{
@@ -19,13 +19,13 @@ const RemoteHeader = lazy<
   }>
 >(() =>
   // @ts-ignore
-  import("header/Header").catch((error) => ({
+  import('header/Header').catch((error) => ({
     default: () => (
       <Typography.Text type="danger">
         {`Не удалось загрузить header (${JSON.stringify(error)})`}
       </Typography.Text>
     ),
-  }))
+  })),
 );
 
 type Items = ItemType<MenuItemType>[];
@@ -36,22 +36,18 @@ export const Header = () => {
 
   const items = useMemo<Items>(() => {
     switch (userData.status) {
-      case "authorized": {
+      case 'authorized': {
         const items: Items = [
           {
-            label: "ONLINE-SHOP",
+            label: 'ONLINE-SHOP',
             key: RoutePath.Main,
             icon: <ShoppingOutlined />,
           },
           {
-            label: "Корзина",
+            label: 'Корзина',
             key: RoutePath.Cart,
             icon: (
-              <Badge
-                count={userData.userData.idsOfProductsInCart.length}
-                size="small"
-                showZero
-              >
+              <Badge count={userData.userData.idsOfProductsInCart.length} size="small" showZero>
                 <ShoppingCartOutlined />
               </Badge>
             ),
@@ -61,15 +57,15 @@ export const Header = () => {
         return items;
       }
 
-      case "notAuthorized": {
+      case 'notAuthorized': {
         const items: Items = [
           {
-            label: "Войти",
+            label: 'Войти',
             key: RoutePath.SingIn,
             icon: <LoginOutlined />,
           },
           {
-            label: "Зарегистрироваться",
+            label: 'Зарегистрироваться',
             key: RoutePath.SingUp,
             icon: <UserAddOutlined />,
           },
@@ -78,7 +74,7 @@ export const Header = () => {
         return items;
       }
 
-      case "loading": {
+      case 'loading': {
         return [];
       }
     }
@@ -93,7 +89,7 @@ export const Header = () => {
       <Suspense fallback={<h1>Не удалось загрузить header</h1>}>
         <RemoteHeader
           items={items}
-          onLogout={userData.status === "authorized" ? handleLogout : undefined}
+          onLogout={userData.status === 'authorized' ? handleLogout : undefined}
         />
       </Suspense>
     </AntdHeader>

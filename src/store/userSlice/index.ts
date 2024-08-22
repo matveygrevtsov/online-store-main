@@ -1,6 +1,6 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import z from "zod";
-import { ELocalStorageKey } from "../../types";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import z from 'zod';
+import { ELocalStorageKey } from '../../types';
 
 export const AuthorizedUserDataSchema = z.object({
   uid: z.string(),
@@ -11,10 +11,10 @@ export type AuthorizedUserData = z.infer<typeof AuthorizedUserDataSchema>;
 
 export const UserStateSchema = z.union([
   z.object({
-    status: z.union([z.literal("loading"), z.literal("notAuthorized")]),
+    status: z.union([z.literal('loading'), z.literal('notAuthorized')]),
   }),
   z.object({
-    status: z.literal("authorized"),
+    status: z.literal('authorized'),
     userData: AuthorizedUserDataSchema,
   }),
 ]);
@@ -22,37 +22,34 @@ export const UserStateSchema = z.union([
 type UserState = z.infer<typeof UserStateSchema>;
 
 const initialState = {
-  status: "loading",
+  status: 'loading',
 } as UserState;
 
 const slice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {
     logout() {
       window.localStorage.clear();
 
       return {
-        status: "notAuthorized",
+        status: 'notAuthorized',
       };
     },
 
     setLoading() {
       return {
-        status: "loading",
+        status: 'loading',
       };
     },
 
     setUserData(_, action: PayloadAction<AuthorizedUserData>) {
       const userData = action.payload;
 
-      window.localStorage.setItem(
-        ELocalStorageKey.UserData,
-        JSON.stringify(userData)
-      );
+      window.localStorage.setItem(ELocalStorageKey.UserData, JSON.stringify(userData));
 
       return {
-        status: "authorized",
+        status: 'authorized',
         userData,
       };
     },
