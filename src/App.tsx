@@ -12,9 +12,9 @@ import { Routes } from './components/Routes/Routes';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { QUERY_CLIENT } from './tanstack';
 
-export const NotificationContext = createContext<NotificationInstance>({} as NotificationInstance);
+  export const NotificationContext = createContext<NotificationInstance>({} as NotificationInstance);
 
-  export const App = (): JSX.Element => {
+export const App = (): JSX.Element => {
   const [notification, notificationContext] = useNotification();
 
   return (
