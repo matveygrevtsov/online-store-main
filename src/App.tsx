@@ -14,7 +14,7 @@ import { QUERY_CLIENT } from './tanstack';
 
 export const NotificationContext = createContext<NotificationInstance>({} as NotificationInstance);
 
-export const App = (): JSX.Element => {
+  export const App = (): JSX.Element => {
   const [notification, notificationContext] = useNotification();
 
   return (
