@@ -7,7 +7,6 @@ module.exports = [
   eslintConfigLove,
   {
     files: ['src/**/*.{js,ts,jsx,tsx}'],
-    ignores: ['src/global.d.ts'],
     // https://eslint.org/docs/latest/use/configure/rules
     rules: {
       'no-alert': 'error',
