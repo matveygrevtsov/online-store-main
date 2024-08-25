@@ -13,7 +13,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "react",
-    "typeRoots": ["./node_modules/@types", "./src/types/index.d.ts"]
+    "typeRoots": ["./node_modules/@types", "./src/global.d.ts"]
   },
-  "include": ["src"]
+  "include": ["src", "webpack.config.js", "eslint.config.js"]
 }

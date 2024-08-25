@@ -8,11 +8,14 @@
     "start": "npx webpack server",
     "test": "jest --runInBand --detectOpenHandles --forceExit",
     "prettier": "prettier --write \"src/**/*.{js,ts,jsx,tsx,css}\"",
-    "lint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx}\"",
+    "lint": "eslint --fix \"src/**/*.{js,ts,jsx,tsx}\" --ignore-pattern webpack.config.js --ignore-pattern eslint.config.js",
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.(js|jsx|ts|tsx)": ["npm run lint:write", "git add"]
+    "src/**/*.(js|jsx|ts|tsx)": [
+      "npm run lint",
+      "git add"
+    ]
   },
   "author": "",
   "license": "ISC",
